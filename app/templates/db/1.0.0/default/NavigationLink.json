@@ -1,0 +1,8 @@
+[{
+  "name": "profile",
+  "url": "/",
+  "label": "Profile",
+  "icon": "social:person",
+  "topLevel": true,
+  "group":"_app_nav_group_"
+}]
