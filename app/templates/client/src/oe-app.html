@@ -106,7 +106,7 @@
       },
       _logOut: function () {
         this.$.logout.body = {};
-        this.$.logout.url = '/auth/logout';
+        this.$.logout.url = '/api/AppUsers/logout';
         this.$.logout.generateRequest();
         sessionStorage.removeItem('auth_token');
         sessionStorage.removeItem('username');

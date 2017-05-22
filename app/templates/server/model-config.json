@@ -10,24 +10,27 @@
             "loopback/server/mixins"
         ]
     },
-
     "UserInfo": {
         "public": true,
+        "dataSource": "db"
+    },
+    "BaseUser": {
+        "public": false,
         "dataSource": "db"
     },
     "AppUser": {
         "public": true,
         "dataSource": "db"
     },
-     "Address": {
+    "Address": {
         "public": true,
         "dataSource": "db"
     },
-     "Country": {
+    "Country": {
         "public": true,
         "dataSource": "db"
     },
-     "Product": {
+    "Product": {
         "public": true,
         "dataSource": "db"
     }

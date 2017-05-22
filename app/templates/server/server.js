@@ -64,6 +64,9 @@ app.get('/logout', function(req, res) {
   res.status(401).send(resp);
 });
 
+// Protecting Api Explorer from unauthorized access
+// Comment the below line if you want to allow access without login.
+app.get('/explorer', ensureLoggedIn);
 
 app.on("started", function(app) {
     console.log('app started');
