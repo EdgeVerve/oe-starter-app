@@ -2,7 +2,6 @@
   "restApiRoot": "/api",
   "host": "0.0.0.0",
   "port": 3000,
-  "cookieSecret": "246bace2-9876-4321-1234-0ae8160b07c8",
   "remoting": {
     "context": {
       "enableHttpContext": true
@@ -24,6 +23,5 @@
       "disableStackTrace": false
     }
   },
-  "legacyExplorer": false,
-  "enableMigration":true
+  "legacyExplorer": false
 }

@@ -9,7 +9,7 @@ module.exports = class extends Generator {
       done();
     });
   }
-  
+
   prompting() {
     return this.prompt([{
       type: 'input',
@@ -46,24 +46,13 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('client'),
-      this.destinationPath('client'),
-      {
-        appName: this.options.appName
-      }
+      this.destinationPath('client')
     );
-    this.fs.copyTpl(
-      this.templatePath('common'),
-      this.destinationPath('common')
-    );    
     this.fs.copyTpl(
       this.templatePath('server'),
       this.destinationPath('server')
-    );
-    this.fs.copyTpl(
-      this.templatePath('db'),
-      this.destinationPath('db')
     );
     this.fs.copyTpl(
       this.templatePath('.bowerrc'),
@@ -91,7 +80,7 @@ module.exports = class extends Generator {
   install() {
     this.installDependencies({
       npm: { 'no-optional': true },
-      bower: true,
+      bower: false,
       yarn: false
     });
   }

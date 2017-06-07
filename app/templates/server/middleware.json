@@ -1,6 +1,8 @@
 {
     "initial:before": {
-        "loopback#favicon": {}
+        "loopback#favicon": {
+            "params": "./client/favicon.ico"
+        }
     },
     "initial": {
         "compression": {},
@@ -15,17 +17,13 @@
     "session": {},
     "auth": {},
     "parse": {},
-    "routes:before": {
-    },
-    "routes:after": {
-    },
+    "routes:before": {},
+    "routes:after": {},
     "files": {
-    	"loopback#static": {
-    		"params": "$!../client"
+        "loopback#static": {
+            "params": "$!../client"
         }
     },
-    "final": {
-    },
-    "final:after": {
-    }
+    "final": {},
+    "final:after": {}
 }
