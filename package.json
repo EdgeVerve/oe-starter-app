@@ -1,6 +1,6 @@
 {
   "name": "oe-starter-app",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Starter app generator to scaffold an oe based application",
   "repository": {
     "type": "git",
