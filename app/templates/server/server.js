@@ -21,9 +21,3 @@ oeApp.boot(app, options, function () {
 app.get('/', function (req, res) {
   res.sendFile('index.html', { root: path.join(__dirname, '../client/') });
 });
-
-app.on("started", function (app) {
-  console.log('app started');
-});
-
-

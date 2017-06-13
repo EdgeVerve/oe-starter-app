@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "<%=description%>",
   "author": "<%=author%>",
-  "repository": "<%=repository%>",
   "main": "server/server.js",
-  "license": "<%=license%>",
   "dependencies": {
     "oe-cloud": "^0.8.0",
     "passport": "0.2.2",
