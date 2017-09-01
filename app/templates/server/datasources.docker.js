@@ -1,8 +1,9 @@
-{
+var mongoHost = process.env.MONGO_HOST || 'localhost';
+module.exports = {
   "db": {
-    "host": "localhost",
+    "host": mongoHost,
     "port": 27017,
-    "url": "mongodb://localhost:27017/commondb",
+    "url": "mongodb://+"+ mongoHost +":27017/commondb",
     "database": "commondb",
     "password": "admin",
     "name": "db",
@@ -11,9 +12,9 @@
     "connectionTimeout": 50000
   },
   "appdb": {
-    "host": "localhost",
+    "host": mongoHost,
     "port": 27017,
-    "url": "mongodb://localhost:27017/appdb",
+    "url": "mongodb://+"+ mongoHost +":27017/appdb",
     "database": "appdb",
     "password": "admin",
     "name": "appdb",
@@ -22,10 +23,10 @@
     "connectionTimeout": 50000
   },
   "gridfs_db": {
-    "host": "localhost",
+    "host": mongoHost,
     "port": 27017,
     "name": "gridfs_db",
-    "url": "mongodb://localhost:27017/gridfs_db",
+    "url": "mongodb://+"+ mongoHost +":27017/gridfs_db",
     "connector": "loopback-component-storage-mongo"
   }
-}
+};

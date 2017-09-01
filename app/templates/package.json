@@ -5,6 +5,7 @@
   "author": "<%=author%>",
   "main": "server/server.js",
   "dependencies": {
+    "loopback-component-storage-mongo": "git+https://github.com/raghav135/loopback-component-storage-mongo#v1.5.1",
     "oe-cloud": "^0.9.3",
     "passport": "0.2.2",
     "passport-facebook": "1.0.3",
