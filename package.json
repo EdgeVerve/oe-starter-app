@@ -8,6 +8,12 @@
   },
   "license": "MIT",
   "author": "Ramesh choudhary <ramesh_srch@outlook.com>",
+  "contributors": [
+    {
+      "name": "Pradeep Kumar Tippa",
+      "email": "pktippa@gmail.com"
+    }
+  ],
   "keywords": [
     "oe-starter"
   ],
