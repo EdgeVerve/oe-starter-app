@@ -6,6 +6,30 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>oeCloud app</title>
+    <script>
+        function loginAndBrowse() {
+            var loginFailedDivId = document.getElementById('login-failed-div');
+            loginFailedDivId.style.display = "none";
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", function (event) {
+                var response = (event.target.response);
+                response = JSON.parse(response);
+                if (response && response.access_token) {
+                    localStorage.swagger_accessToken = response.access_token;
+                    window.location.href = "/explorer";
+                } else {
+                    loginFailedDivId.style.display = "block";
+                }
+            });
+            oReq.open("POST", "/auth/local");
+            oReq.setRequestHeader("Content-type", "application/json");
+            var payload = {
+                "username": "admin",
+                "password": "admin"
+            };
+            oReq.send(JSON.stringify(payload));
+        }
+    </script>
     <link rel="icon" href="favicon.ico">
         <style>
             @font-face {
@@ -134,6 +158,10 @@
                 color: #666;
                 font-family: Rubik-Light
             }
+
+            .code-style {
+                background-color: #eff0f1
+            }
         </style>
 </head>
 
@@ -146,6 +174,36 @@
             <div>Congratulations on getting started !</div>
             <div class="sub-text">
                 <p> Open Enterprise Cloud is an open source framework for development of modern cloud native enterprise applications</p>
+            </div>
+        </div>
+
+    </section>
+    <section class="small">
+        <div class="main-text">
+            <div>Login as admin and continue to oecloud.io API Explorer</div>
+            <div class="sub-text">
+                <br>
+                <button onclick="loginAndBrowse()">Browse APIs as Admin</button>
+            </div>
+            <div id="login-failed-div" class="sub-text" style="display: none">
+                <p>Seems default admin user is not created, Follow below Steps
+                    <ul>
+                        <li>Stop Server</li>
+                        <li>set CREATE_ADMIN environment variable to true
+                            <br>
+                            <code class="code-style">
+                                $ export CREATE_ADMIN=true
+                            </code>
+                        </li>
+                        <li>Start Server
+                            <br>
+                            <code class="code-style">
+                                $ node .
+                            </code>
+                        </li>
+                    </ul>
+                </p>
+                
             </div>
         </div>
 
