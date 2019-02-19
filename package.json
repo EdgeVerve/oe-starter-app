@@ -1,7 +1,7 @@
 {
   "name": "oe-starter-app",
-  "version": "1.2.0",
-  "description": "Starter app generator to scaffold an oe based application",
+  "version": "2.0.0",
+  "description": "Starter app generator to scaffold an oec-next based application with CI/CD",
   "repository": {
     "type": "git",
     "url": "git@github.com:EdgeVerve/oe-starter-app.git"

@@ -19,57 +19,68 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    return this.prompt([{
+    return this.prompt([
+      {
+        type: 'list',
+        name: 'oeCloud',
+        message: 'which oeCloud version you want to use?',
+        default: '2.0',
+        choices: ['1.0', '2.0']
+      }, {
         type: 'input',
         name: 'version',
-        message: 'version',
+        message: 'Your application version?',
         default: '1.0.0'
       }, {
         type: 'input',
         name: 'description',
-        message: 'description',
+        message: 'Your application description?',
         default: 'A sample oecloud based application'
       }, {
         type: 'input',
         name: 'author',
         message: 'author',
         default: this.options.author
-      },
-      {
-        type: 'confirm',
-        name: 'bowerinstall',
-        message: 'Do you want to install ui-components(bower)?',
-        default: false
       }
     ]).then((answers) => {
       this.options.author = answers.author || this.options.author;
       this.options.version = answers.version;
       this.options.description = answers.description;
-      this.options.bowerinstall = answers.bowerinstall;
+      this.options.oeCloud = answers.oeCloud;
+      this.options.bowerInstall = answers.oeCloud === '1.0' ? true : false;
     });
   }
 
   writing() {
+    var version = this.options.oeCloud;
+    this.fs.copyTpl(
+      this.templatePath(version + '/common'),
+      this.destinationPath('common')
+    );
     this.fs.copy(
-      this.templatePath('client'),
+      this.templatePath('1.0/client'),
       this.destinationPath('client')
     );
     this.fs.copyTpl(
-      this.templatePath('server'),
+      this.templatePath(version + '/server'),
       this.destinationPath('server')
     );
+    if (this.options.oeCloud === '2.0') {
+      this.fs.copyTpl(
+        this.templatePath(version + '/test'),
+        this.destinationPath('test')
+      );
+      this.fs.copyTpl(
+        this.templatePath(version + '/lib'),
+        this.destinationPath('lib')
+      );
+    }
     this.fs.copyTpl(
-      this.templatePath('.bowerrc'),
-      this.destinationPath('.bowerrc')
+      this.templatePath(version + '/settings'),
+      this.destinationPath('./')
     );
     this.fs.copyTpl(
-      this.templatePath('bower.json'),
-      this.destinationPath('bower.json'), {
-        appName: this.options.appName
-      }
-    );
-    this.fs.copyTpl(
-      this.templatePath('package.json'),
+      this.templatePath(version + '/package.json'),
       this.destinationPath('package.json'), {
         appName: this.options.appName,
         description: this.options.description,
@@ -84,7 +95,7 @@ module.exports = class extends Generator {
       npm: {
         'no-optional': true
       },
-      bower: this.options.bowerinstall,
+      bower: this.options.bowerInstall,
       yarn: false
     });
   }
