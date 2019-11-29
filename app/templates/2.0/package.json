@@ -14,9 +14,7 @@
     "fix-lint": "eslint --fix .",
     "grunt-cover": "grunt test-with-coverage",
     "postinstall": "cd client && npm install && cd .. && npm run prod-build",
-    "prod-build": "gulp pre-build && polymer build && gulp post-build",
-    "dev-build": "gulp clean-build && gulp build-dev",
-	"build": "polymer build && gulp move-helper",
+    "prod-build": "gulp pre-build && polymer build && gulp post-build"
   },
   "dependencies": {
     "async": "^2.5.0",
