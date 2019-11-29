@@ -1,14 +1,13 @@
 {
-  "_meta": {
-    "sources": [
-      "../common/models"
-    ],
-    "mixins": [
-      "../common/mixins"
-    ]
-  },
-  "Skeleton": {
-    "dataSource": "db",
-    "public": true
-  }  
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins"
+        ]
+    }
 }

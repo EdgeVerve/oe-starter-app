@@ -1,5 +1,9 @@
 {
-    "initial:before": {},
+    "initial:before": {
+        "loopback#favicon": {
+            "params": "./client/favicon.ico"
+        }
+    },
     "initial": {
         "compression": {},
         "cors": {
@@ -10,18 +14,16 @@
             }
         }
     },
-    "session:before": {
-        "./middleware/skeleton-middleware": {}
-    },    
     "session": {},
-    "session:after": {},
     "auth": {},
-    "auth:after": {},
     "parse": {},
     "routes:before": {},
-    "routes": {},
-    "files": {},
+    "routes:after": {},
+    "files": {
+        "loopback#static": {
+            "params": "$!../client"
+        }
+    },
     "final": {},
     "final:after": {}
 }
-
