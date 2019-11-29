@@ -1,0 +1,10 @@
+{
+  "name": "cassi-bank",
+  "description": "cassi bank client side implementation",
+  "dependencies": {
+    "@polymer/polymer": "3.1.0"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "2.2.2"
+  }
+}
