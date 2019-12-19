@@ -2,7 +2,15 @@ const Generator = require('oe-generator');
 const path = require('path');
 const fullname = require('fullname');
 const merge = require('merge-package-json');
+var async = require('async');
 var appListArray = [];
+var stack = [];
+const util = require('util');
+const inquirer = require('inquirer');
+const exec = util.promisify(require('child_process').exec);
+
+
+//const { exec } = require('child_process');
 module.exports = class extends Generator {
   initializing() {
     var done = this.async();
@@ -19,16 +27,14 @@ module.exports = class extends Generator {
       done();
     });
   }
-
   prompting() {
-    debugger;
     return this.prompt([
       {
         type: 'list',
         name: 'oeCloud',
         message: 'Select which type of application you want to use?',
         default: 'oe-cloud-2.x',
-        choices: ['oe-cloud-1.x', 'oe-cloud-2.x']
+        choices: ['oe-cloud-1.x', 'oe-cloud-2.x', 'oe-cloud-ui']
       }, {
         type: 'input',
         name: 'version',
@@ -40,11 +46,26 @@ module.exports = class extends Generator {
         message: 'Your application description?',
         default: 'A sample oecloud based application'
       }, {
+
         type: 'input',
         name: 'author',
         message: 'author',
         default: this.options.author
-      },
+      }
+      
+    ]).then((answers) => {
+      this.options.author = answers.author || this.options.author;
+      this.options.version = answers.version;
+      this.options.description = answers.description;
+      this.options.oeCloud = answers.oeCloud;
+      this.options.bowerInstall = answers.oeCloud === 'oe-cloud-1.x' ? true : false;
+    });
+  }
+
+
+  prompting_2x() {
+    if(this.options.oeCloud === 'oe-cloud-2.x'){
+    return inquirer.prompt([
 	  {
       type: "checkbox",
       name: "modules",
@@ -68,54 +89,68 @@ module.exports = class extends Generator {
       ]
       },
     ]).then((answers) => {
-      this.options.author = answers.author || this.options.author;
-      this.options.version = answers.version;
-      this.options.description = answers.description;
-      this.options.oeCloud = answers.oeCloud;
 
-  
     var list = answers.modules;
     var moduleListObject ={};
       for(var i = 0;i<list.length;i++){
+      
       var key = list[i].split(':')[0];
-       var value = "git+http://evgit/oecloud.io/"+list[i].split(':')[0] + ".git#master";
-        moduleListObject[key] = value;
+         stack.push(key);
         var appListObject = {};
-        appListObject["path"] = list[i];
+        appListObject["path"] = key;
         appListObject["enabled"] = true;
         appListArray.push(appListObject);
-        key = '';
-        value='';
+   
       }
       let dependencyObj = {"dependencies": moduleListObject};
-      this.options.modules = dependencyObj;
-
-      this.options.bowerInstall = answers.oeCloud === 'oe-cloud-1.x' ? true : false;
+      this.options.modules = dependencyObj; 
     });
+  }
+  }
+
+  async updatePackageJson(){
+   if(this.options.oeCloud === 'oe-cloud-2.x'){
+    var versionList = [];
+    var res = {};
+    for(var i =0;i<stack.length;i++){
+     var command = "npm info " + stack[i] + " version";
+      const { stdout, stderr } = await exec(command);
+      versionList.push('^'+stdout);
+  }
+   stack.forEach((key, i) => res[key] = versionList[i].replace('\n', ''));
+   let dependencyObj = {"dependencies": res};
+    this.options.modules = dependencyObj;
+   }
   }
 
   writing() {
+
     var version = this.options.oeCloud;
+    if(this.options.oeCloud === 'oe-cloud-2.x' || this.options.oeCloud === 'oe-cloud-1.x'){
     this.fs.copyTpl(
       this.templatePath(version + '/common'),
       this.destinationPath('common')
     );
+  }
     if (this.options.oeCloud === 'oe-cloud-2.x'){
       this.fs.copy(
         this.templatePath('oe-cloud-2.x/client'),
         this.destinationPath('client')
       );
     }
-     else {
+     else 
+     if (this.options.oeCloud === 'oe-cloud-1.x'){
     this.fs.copy(
       this.templatePath('oe-cloud-1.x/client'),
       this.destinationPath('client')
     );
   }
+  if(this.options.oeCloud === 'oe-cloud-2.x' || this.options.oeCloud === 'oe-cloud-1.x'){
     this.fs.copyTpl(
       this.templatePath(version + '/server'),
       this.destinationPath('server')
     );
+  }
     if (this.options.oeCloud === 'oe-cloud-2.x') {
       this.fs.copyTpl(
         this.templatePath(version + '/test'),
@@ -126,10 +161,12 @@ module.exports = class extends Generator {
         this.destinationPath('lib')
       );
     }
+    if(this.options.oeCloud === 'oe-cloud-2.x' || this.options.oeCloud === 'oe-cloud-1.x'){
     this.fs.copyTpl(
       this.templatePath(version + '/settings'),
       this.destinationPath('./')
     );
+  }
     if (this.options.oeCloud === 'oe-cloud-2.x') {
     this.fs.copyTpl(
       this.templatePath(version + '/polymer.json'),
@@ -173,18 +210,38 @@ module.exports = class extends Generator {
     );
     if (this.options.oeCloud === 'oe-cloud-2.x') {
   
-   let existingPkg= this.fs.readJSON(
-      this.destinationPath('package.json')
-    );
- 
-    existingPkg = merge(existingPkg,this.options.modules);
-  
-   this.fs.writeJSON(
-      this.destinationPath('package.json'),
-     JSON.parse(existingPkg)
-     );
-    }
+      let existingPkg= this.fs.readJSON(
+         this.destinationPath('package.json')
+       );
+    
+       existingPkg = merge(existingPkg,this.options.modules);
+     
+      this.fs.writeJSON(
+         this.destinationPath('package.json'),
+        JSON.parse(existingPkg)
+        );
+       }
 
+       if(this.options.oeCloud === 'oe-cloud-ui') {
+        this.fs.copyTpl(
+          this.templatePath(version + '/data'),
+          this.destinationPath('data')
+        );
+        this.fs.copyTpl(
+          this.templatePath(version + '/src'),
+          this.destinationPath('src')
+        );
+        this.fs.copyTpl(
+          this.templatePath(version + '/polymer.json'),
+          this.destinationPath('polymer.json')
+        );
+        this.fs.copyTpl(
+          this.templatePath(version + '/index.html'),
+          this.destinationPath('index.html')
+        );
+
+       }
+   
   }
 
   install() {
