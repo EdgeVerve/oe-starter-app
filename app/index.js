@@ -151,16 +151,7 @@ module.exports = class extends Generator {
       this.destinationPath('server')
     );
   }
-    if (this.options.oeCloud === 'oe-cloud-2.x') {
-      this.fs.copyTpl(
-        this.templatePath(version + '/test'),
-        this.destinationPath('test')
-      );
-      this.fs.copyTpl(
-        this.templatePath(version + '/lib'),
-        this.destinationPath('lib')
-      );
-    }
+ 
     if(this.options.oeCloud === 'oe-cloud-2.x' || this.options.oeCloud === 'oe-cloud-1.x'){
     this.fs.copyTpl(
       this.templatePath(version + '/settings'),
