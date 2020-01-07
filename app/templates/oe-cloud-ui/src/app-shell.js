@@ -3,18 +3,11 @@ import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/iron-image/iron-image.js"
-// import "@polymer/paper-tabs/paper-tabs.js";
-// import "@polymer/paper-tabs/paper-tab.js";
-// import "@polymer/paper-toolbar/paper-toolbar.js";
-// import "@polymer/paper-icon-button/paper-icon-button.js";
-// import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/app-route/app-location.js"
-import "oe-data-table/oe-data-table.js";
 import "oe-app-route/oe-app-route";
 import '@polymer/app-layout/app-layout.js';
 import "oe-ajax/oe-ajax.js";
-import "oe-message-handler/oe-message-handler.js"
 import '/src/home-page.js';
 
 /**
@@ -43,8 +36,7 @@ class AppShell extends (PolymerElement) {
       <app-header-layout>
         <app-header slot="header" fixed condenses effects="waterfall">
           <app-toolbar style="background: blue; color: white">
-         
-          <img class="logo" src="/src/logo.png" />
+          <img class="logo" src="../src/logo.png" />
           </app-toolbar>
         </app-header>
 
