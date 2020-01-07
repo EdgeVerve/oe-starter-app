@@ -5,6 +5,8 @@
   "sources": [
     "src/**",
     "data/**",
+    "img/**",
+    "favicon.ico",
     "package.json"
   ],
   "extraDependencies": [

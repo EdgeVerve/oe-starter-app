@@ -219,12 +219,25 @@ module.exports = class extends Generator {
         this.destinationPath('src')
       );
       this.fs.copy(
+        this.templatePath(version + '/img'),
+        this.destinationPath('img')
+      );
+      this.fs.copy(
+        this.templatePath(version + '/favicon.ico'),
+        this.destinationPath('favicon.ico')
+      );
+      
+      this.fs.copy(
         this.templatePath(version + '/polymer.json'),
         this.destinationPath('polymer.json')
       );
       this.fs.copy(
         this.templatePath(version + '/index.html'),
         this.destinationPath('index.html')
+      );
+      this.fs.copy(
+        this.templatePath(version + '/webpack.config.js'),
+        this.destinationPath('webpack.config.js')
       );
     }
   }

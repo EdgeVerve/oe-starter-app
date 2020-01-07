@@ -8,7 +8,7 @@ import "@polymer/app-route/app-location.js"
 import "oe-app-route/oe-app-route";
 import '@polymer/app-layout/app-layout.js';
 import "oe-ajax/oe-ajax.js";
-import '/src/home-page.js';
+import './home-page.js';
 
 /**
  * @customElement
@@ -36,7 +36,7 @@ class AppShell extends (PolymerElement) {
       <app-header-layout>
         <app-header slot="header" fixed condenses effects="waterfall">
           <app-toolbar style="background: blue; color: white">
-          <img class="logo" src="../src/logo.png" />
+          <img class="logo" src="../img/logo.png" />
           </app-toolbar>
         </app-header>
 
