@@ -1,7 +1,7 @@
 const Generator = require('oe-generator');
 const path = require('path');
 const fullname = require('fullname');
-const merge = require('merge-package-json');
+const merge = require("lodash/fp/merge");
 var async = require('async');
 var appListArray = [];
 var stack = [];
@@ -200,12 +200,11 @@ module.exports = class extends Generator {
       let existingPkg = this.fs.readJSON(
         this.destinationPath('package.json')
       );
-
       existingPkg = merge(existingPkg, this.options.modules);
 
       this.fs.writeJSON(
         this.destinationPath('package.json'),
-        JSON.parse(existingPkg)
+        existingPkg
       );
     }
 
