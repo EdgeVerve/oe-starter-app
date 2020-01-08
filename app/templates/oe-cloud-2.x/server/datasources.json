@@ -5,7 +5,7 @@
     "url": "mongodb://localhost:27017/commondb",
     "database": "commondb",
     "name": "db",
-    "connector": "mongodb",
+    "connector": "oe-connector-mongodb",
     "connectionTimeout": 50000
   }
 }

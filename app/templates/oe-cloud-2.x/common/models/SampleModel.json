@@ -1,5 +1,5 @@
 {
-  "name": "Skeleton",
+  "name": "SampleModel",
   "base": "BaseEntity",
   "idInjection": true,
   "properties": {

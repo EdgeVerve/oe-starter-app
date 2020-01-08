@@ -6,6 +6,12 @@
   ],
   "moduleResolution": "node",
   "npm": true,
+  "sources": [
+    "logo.png",
+	"favicon.ico",
+    "package.json"
+  ],
+
   "builds": [
     {
       "preset": "es5-bundled",
