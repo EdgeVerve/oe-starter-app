@@ -1,0 +1,28 @@
+{
+  "name": "<%=appName%>",
+  "version": "<%=version%>",
+  "description": "<%=description%>",
+  "author":"<%=author%>",
+  "engines": {
+    "node": ">=6"
+  },
+   "main": "server/server.js",
+  "scripts": {
+    "lint": "eslint .",
+    "fix-lint": "eslint --fix .",
+    "postinstall": "polymer build"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "lodash": "^4.17.15",
+    "oe-connector-mongodb": "^2.0.0",
+    "oe-cloud": "^2.0.0",
+    "oe-logger": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.10.0", 
+    "polymer-cli": "^1.9.5"
+  },
+  "license": "MIT"
+}

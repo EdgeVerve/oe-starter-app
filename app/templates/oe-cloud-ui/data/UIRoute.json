@@ -1,0 +1,7 @@
+[{
+  "type": "elem",
+  "path": "/",
+  "name": "home-page",
+    "import": "/src/home-page.js"
+  }
+]
