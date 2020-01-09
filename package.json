@@ -12,7 +12,7 @@
     "oe-starter"
   ],
   "dependencies": {
-    "oe-generator": "1.2.1",
+    "oe-generator": "git+http://evgit/kmrsumeet/oe-generator.git#master",
     "fullname": "3.3.0"
   },
   "files": [
