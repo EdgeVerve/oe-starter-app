@@ -6,5 +6,11 @@
     {
         "path": "./",
         "enabled": true
+    },
+    {
+        "path": "oe-master-job-executor",
+        "autoEnableMixins": true,
+        "enabled": true
     }
+    
 ]

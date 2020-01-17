@@ -79,7 +79,6 @@ module.exports = class extends Generator {
             "oe-business-rule: Enables business rule functionality",
             "oe-validation: Enables validations to be attached to models like Property level, Embedded Model, Relation Validations etc.",
             "oe-node-red: Enables Node-RED integration with oe-Cloud",
-            "oe-master-job-executor: Enables to run a function once in a randomly selected master app-instance (from a cluster).",
             "oe-job-scheduler: Enables to schedule jobs based on business rules for scheduling dates and times.",
             "oe-metadata-ui: Enables support for holding and serving metadata used by oe-ui framework.",
             "oe-workflow: Enables workflow",
@@ -98,6 +97,7 @@ module.exports = class extends Generator {
           stack.push(key);
           var appListObject = {};
           appListObject["path"] = key;
+          appListObject["autoEnableMixins"] = true;
           appListObject["enabled"] = true;
           appListArray.push(appListObject);
 
@@ -109,6 +109,7 @@ module.exports = class extends Generator {
   }
 
   async updatePackageJson() {
+    console.log('\n Scaffolding of oe-cloud 2.x application in progress!! \n');
     if (this.options.oeCloud === 'oe-cloud-2.x') {
       var versionList = [];
       var res = {};
@@ -121,6 +122,7 @@ module.exports = class extends Generator {
       let dependencyObj = { "dependencies": res };
       this.options.modules = dependencyObj;
     }
+  
   }
 
   writing() {
@@ -156,9 +158,13 @@ module.exports = class extends Generator {
       }
   
     if (this.options.oeCloud === 'oe-cloud-2.x') {
-      this.fs.copyTpl(
+      this.fs.copy(
         this.templatePath(version + '/polymer.json'),
         this.destinationPath('polymer.json')
+      );
+      this.fs.copy(
+        this.templatePath(version + '/providers.json'),
+        this.destinationPath('providers.json')
       );
     
       let existingappList = this.fs.readJSON(

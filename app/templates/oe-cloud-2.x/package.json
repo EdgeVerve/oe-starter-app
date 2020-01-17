@@ -15,6 +15,8 @@
   "dependencies": {
     "async": "^2.5.0",
     "lodash": "^4.17.15",
+    "loopback-component-explorer": "^6.5.0",
+    "oe-master-job-executor" : "^2.1.0",
     "oe-connector-mongodb": "^2.0.0",
     "oe-cloud": "^2.0.0",
     "oe-logger": "^2.0.0"
