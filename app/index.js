@@ -98,6 +98,7 @@ module.exports = class extends Generator {
           stack.push(key);
           var appListObject = {};
           appListObject["path"] = key;
+          appListObject["autoEnableMixins"] = true;
           appListObject["enabled"] = true;
           appListArray.push(appListObject);
 
@@ -109,6 +110,7 @@ module.exports = class extends Generator {
   }
 
   async updatePackageJson() {
+    console.log('\n Scaffolding of oe-cloud 2.x application in progress!! \n');
     if (this.options.oeCloud === 'oe-cloud-2.x') {
       var versionList = [];
       var res = {};
@@ -121,6 +123,7 @@ module.exports = class extends Generator {
       let dependencyObj = { "dependencies": res };
       this.options.modules = dependencyObj;
     }
+  
   }
 
   writing() {
@@ -156,9 +159,13 @@ module.exports = class extends Generator {
       }
   
     if (this.options.oeCloud === 'oe-cloud-2.x') {
-      this.fs.copyTpl(
+      this.fs.copy(
         this.templatePath(version + '/polymer.json'),
         this.destinationPath('polymer.json')
+      );
+      this.fs.copy(
+        this.templatePath(version + '/providers.json'),
+        this.destinationPath('providers.json')
       );
     
       let existingappList = this.fs.readJSON(
