@@ -79,6 +79,7 @@ module.exports = class extends Generator {
             "oe-business-rule: Enables business rule functionality",
             "oe-validation: Enables validations to be attached to models like Property level, Embedded Model, Relation Validations etc.",
             "oe-node-red: Enables Node-RED integration with oe-Cloud",
+            "oe-master-job-executor: Enables to run a function once in a randomly selected master app-instance (from a cluster).",
             "oe-job-scheduler: Enables to schedule jobs based on business rules for scheduling dates and times.",
             "oe-metadata-ui: Enables support for holding and serving metadata used by oe-ui framework.",
             "oe-workflow: Enables workflow",
