@@ -110,8 +110,8 @@ module.exports = class extends Generator {
   }
 
   async updatePackageJson() {
-    console.log('\n Scaffolding of oe-cloud 2.x application in progress!! \n');
     if (this.options.oeCloud === 'oe-cloud-2.x') {
+	  console.log('\n Scaffolding of oe-cloud 2.x application in progress!! \n');
       var versionList = [];
       var res = {};
       for (var i = 0; i < stack.length; i++) {
@@ -160,14 +160,10 @@ module.exports = class extends Generator {
   
     if (this.options.oeCloud === 'oe-cloud-2.x') {
       this.fs.copy(
-        this.templatePath(version + '/polymer.json'),
-        this.destinationPath('polymer.json')
-      );
-      this.fs.copy(
         this.templatePath(version + '/providers.json'),
         this.destinationPath('providers.json')
       );
-    
+
       let existingappList = this.fs.readJSON(
         this.destinationPath('server/app-list.json')
       );
@@ -231,11 +227,6 @@ module.exports = class extends Generator {
       this.fs.copy(
         this.templatePath(version + '/favicon.ico'),
         this.destinationPath('favicon.ico')
-      );
-      
-      this.fs.copy(
-        this.templatePath(version + '/polymer.json'),
-        this.destinationPath('polymer.json')
       );
       this.fs.copy(
         this.templatePath(version + '/index.html'),

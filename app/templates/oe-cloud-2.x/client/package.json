@@ -1,10 +1,25 @@
 {
   "name": "cassi-bank",
   "description": "cassi bank client side implementation",
+  "scripts": {
+    "webpack": "webpack",
+    "postinstall": "webpack"
+  },
   "dependencies": {
-    "@polymer/polymer": "3.1.0"
+	"@polymer/app-layout": "^3.0.2",
+    "@polymer/iron-flex-layout": "^3.0.1",
+    "@polymer/iron-image": "^3.0.1",
+    "@polymer/iron-pages": "^3.0.1",
+    "@polymer/paper-toolbar": "^3.0.1",
+    "@polymer/polymer": "^3.1.0",
+    "oe-ajax": "^2.0.0",
+    "oe-app-route": "^2.0.0"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "2.2.2"
+	"@webcomponents/webcomponentsjs": "^2.2.7",
+    "copy-webpack-plugin": "^5.0.4",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8",
+    "webpack-virtual-modules": "^0.1.11"
   }
 }
