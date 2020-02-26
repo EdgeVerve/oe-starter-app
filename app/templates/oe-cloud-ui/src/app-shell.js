@@ -1,13 +1,13 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/app-layout/app-header-layout/app-header-layout.js";
-import "@polymer/app-layout/app-header/app-header.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "@polymer/iron-image/iron-image.js"
-import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/app-route/app-location.js"
-import "oe-app-route/oe-app-route";
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import '@polymer/app-layout/app-header-layout/app-header-layout.js';
+import '@polymer/app-layout/app-header/app-header.js';
+import '@polymer/app-layout/app-toolbar/app-toolbar.js';
+import '@polymer/iron-image/iron-image.js';
+import '@polymer/iron-pages/iron-pages.js';
+import '@polymer/app-route/app-location.js';
+import 'oe-app-route/oe-app-route';
 import '@polymer/app-layout/app-layout.js';
-import "oe-ajax/oe-ajax.js";
+import 'oe-ajax/oe-ajax.js';
 import './home-page.js';
 
 /**
@@ -15,8 +15,8 @@ import './home-page.js';
  * @polymer
  */
 class AppShell extends (PolymerElement) {
-    static get template() {
-        return html`
+  static get template() {
+    return html`
 
     <style is="custom-style">
 
@@ -54,21 +54,19 @@ class AppShell extends (PolymerElement) {
     </app-drawer-layout>
   
     `;
-    }
+  }
 
-    static get is() {
-        return 'app-shell';
-    }
+  static get is() {
+    return 'app-shell';
+  }
 
-    static get properties() {
-        return {
-            route: {
-                type: Object
-            }
-        };
-    }
-
-
+  static get properties() {
+    return {
+      route: {
+        type: Object
+      }
+    };
+  }
 }
 
-window.customElements.define("app-shell", AppShell);
+window.customElements.define('app-shell', AppShell);

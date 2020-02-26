@@ -1,8 +1,8 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class HomePage extends PolymerElement {
-    static get template() {
-        return html`
+  static get template() {
+    return html`
 
 
         <style>
@@ -216,15 +216,14 @@ class HomePage extends PolymerElement {
     </section>
 
         `;
-    }
-    static get properties() {
-        return {
+  }
+  static get properties() {
+    return {
 
-        }
-    }
-    connectedCallback() {
-        super.connectedCallback();
-    }
-
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+  }
 }
-window.customElements.define('home-page', HomePage)
+window.customElements.define('home-page', HomePage);

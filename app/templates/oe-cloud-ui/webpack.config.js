@@ -4,7 +4,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: './src/app-shell.js',
   output: {
-    filename: "./src/app-shell.js",
+    filename: './src/app-shell.js',
     path: path.resolve(__dirname, './build/webpack')
   },
   plugins: [
@@ -30,4 +30,4 @@ module.exports = {
     }
     ])
   ]
-}
+};
