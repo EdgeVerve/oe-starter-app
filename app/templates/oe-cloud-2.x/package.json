@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "eslint .",
     "fix-lint": "eslint --fix .",
-    "postinstall": "polymer build"
+    "postinstall": "cd client && npm install",
+    "start": "http-server ./build/webpack/"
   },
   "dependencies": {
     "async": "^2.5.0",
@@ -22,8 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "eslint": "^4.10.0", 
-    "polymer-cli": "^1.9.5"
+    "eslint": "^4.10.0"
   },
   "license": "MIT"
 }

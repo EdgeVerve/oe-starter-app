@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/app-shell.js',
   output: {
     filename: './src/app-shell.js',
-    path: path.resolve(__dirname, './build/webpack')
+    path: path.resolve(__dirname, '../build/webpack')
   },
   plugins: [
     new CopyPlugin([{
