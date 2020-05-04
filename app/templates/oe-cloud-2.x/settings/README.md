@@ -10,16 +10,16 @@ A scaffold project of oe-cloud.
 
 ### Pre-requisite
 
-- you should able to connecto to [evgit](http://evgit), [npmjs](http://registry.npmjs.org) and [github](https://github.com) when you use npm on command line
+- you should able to connect to [npmjs](http://registry.npmjs.org) and [github](https://github.com) when you use npm on command line
 - For that use .npmrc and .gitconfig as shown below
 
 *.npmrc*
 
 ```
-http-proxy=http://<username>:<password>@10.68.248.102:80/
-https-proxy=http://<username>:<password>@10.68.248.102:80/
+proxy=http://<username>:<password>@<proxy-ip>:<proxy-port>/
+https-proxy=http://<username>:<password>@<proxy-ip>:<proxy-port>/
 registry="http://registry.npmjs.org"
-no_proxy=
+noproxy=127.0.0.1,localhost,0.0.0.0
 strict-ssl=false
 python=E:\Python27\python.exe
 ```
@@ -28,19 +28,12 @@ python=E:\Python27\python.exe
 
 ```
 [http]
-proxy = http://<username>:<password>@10.68.248.102:80/
+    proxy = http://<username>:<password>@<proxy-ip>:<proxy-port>/
 [https]
-proxy = http://<username>:<password>@10.68.248.102:80/
-[http "http://10.73.97.24"]
-                sslVerify = false
-                proxy =
-[http "http://evgit"]
-                sslVerify = false
-                proxy =
-[http "http://10.188.25.62"]
-                sslVerify = false
-                proxy =		                
-				
+    proxy = http://<username>:<password>@<proxy-ip>:<proxy-port>/
+[http "http://<ip>"]
+    sslVerify = false
+    proxy =
 [user]
 	name = username
 	email = username@domain.com

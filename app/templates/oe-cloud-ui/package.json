@@ -28,9 +28,5 @@
     "webpack-virtual-modules": "^0.1.11"
 
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git@evgit:oecloud.io/oe-skeleton.git"
-  }
+  "license": "MIT"
 }
