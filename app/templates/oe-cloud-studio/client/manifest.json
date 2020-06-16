@@ -1,0 +1,7 @@
+{
+  "name": "cassi bank",
+  "short_name": "cassi bank",
+  "description": "cassi bank client side implementation",
+  "start_url": "/",
+  "display": "standalone"
+}
