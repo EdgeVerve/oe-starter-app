@@ -140,7 +140,7 @@ module.exports = class extends Generator {
   }
 
   async updatePackageJson() {
-    if (this.options.oeCloud2x === 'oe-cloud-2.x-server' || this.options.oeCloud2x === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') {
       console.log('\n Scaffolding of oe-cloud application in progress!! \n');
       var versionList = [];
       var res = {};
