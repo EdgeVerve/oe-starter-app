@@ -178,6 +178,16 @@ module.exports = class extends Generator {
         this.destinationPath('client')
       );
 
+      this.fs.copy(
+        this.templatePath('oe-cloud-studio/lib'),
+        this.destinationPath('lib')
+      );
+
+      this.fs.copy(
+        this.templatePath('oe-cloud-studio/db'),
+        this.destinationPath('db')
+      );
+
       this.fs.copyTpl(
         this.templatePath(version + '/designer-config.js'),
         this.destinationPath('designer-config.js')
