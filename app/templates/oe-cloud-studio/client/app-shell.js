@@ -23,7 +23,7 @@ import './styles/shared-styles.js';
 import 'oe-chart/oe-chart.js';
 import 'oe-ui-misc/oe-widget-container.js';
 import { ReduxMixin } from './mixins/redux-mixin.js';
-import { navigateAction } from './scripts/state/actions.js';
+import { navigateAction, updateUserInfo } from './scripts/state/actions.js';
 import 'oe-radio-group/oe-radio-group.js';
 import './src/controls/app-route';
 
@@ -40,6 +40,7 @@ import 'oe-input/oe-textarea.js';
 import '@polymer/iron-iconset/iron-iconset.js';
 import 'oe-mixins/oe-ajax-mixin.js';
 import 'oe-combo/oe-combo.js';
+import 'oe-combo/oe-typeahead.js';
 import '@polymer/iron-icons/social-icons';
 import '@polymer/app-layout/app-scroll-effects/app-scroll-effects.js';
 import '@polymer/iron-icons/maps-icons';
@@ -76,6 +77,12 @@ import './src/controls/spinner-overlay.js';
 import './src/landing-page.js';
 import './app-icons.js';
 import 'oe-side-nav/oe-side-nav';
+import 'oe-ui-misc/oe-hbox';
+import 'oe-ui-misc/oe-vbox';
+import './src/controls/custom-input';
+import { OEAjaxMixin } from 'oe-mixins/oe-ajax-mixin.js';
+
+import './src/pages/login-page';
 
 import './src/controls/custom-input';
 
@@ -83,7 +90,7 @@ import './src/controls/custom-input';
  * @customElement
  * @polymer
  */
-class AppShell extends ReduxMixin(PolymerElement) {
+class AppShell extends OEAjaxMixin(ReduxMixin(PolymerElement)) {
   static get template() {
     return html`
         <style include="shared-styles iron-flex iron-flex-alignment iron-flex-factors app-theme">
@@ -237,12 +244,16 @@ class AppShell extends ReduxMixin(PolymerElement) {
     
     <oe-message-handler fit-bottom duration=3000 persist-on="error,warning"></oe-message-handler>
     <spinner-overlay message="Loading..." with-backdrop no-cancel-on-esc-key no-cancel-on-outside-click opened={{showSpinner}}></spinner-overlay>
+    <template is="dom-if" if=[[!userLoggedIn]]>
+    <login-page login-info={{loginInfo}} on-login-success="__getUserInfo"></login-page>
+  </template>
+  <template is="dom-if" if=[[userLoggedIn]]>
     <app-header-layout>
       <app-header fixed condenses effects="waterfall" slot="header" >
         <app-toolbar>
           <paper-icon-button icon="menu" on-tap="_handleOpenedChange"></paper-icon-button>
           <div class="layout flex horizontal center">
-              <span class="app-title" on-tap="_goToHome">Config DB</span>
+              <span class="app-title" on-tap="_goToHome">Oe Cloud</span>
           </div>
         </app-toolbar>
       </app-header>
@@ -278,6 +289,7 @@ class AppShell extends ReduxMixin(PolymerElement) {
         </div>
       </app-drawer-layout>
     </app-header-layout>
+    </template>
     `;
   }
 
@@ -315,6 +327,10 @@ class AppShell extends ReduxMixin(PolymerElement) {
         type: Boolean,
         value: false,
         reflectToAttribute: true
+      },
+      userInfo:{
+        type:Object,
+        statePath:'userInfo'
       }
     };
   }
@@ -359,6 +375,35 @@ class AppShell extends ReduxMixin(PolymerElement) {
   _endSpinner(e) {
     this.ajaxQueue -= 1;
     if (this.ajaxQueue === 0) this.set('showSpinner', false);
+  }
+
+  connectedCallback(){
+    super.connectedCallback();
+    this.__getUserInfo();
+  }
+
+  __getUserInfo(){
+    let url = '/api/Users/aboutMe';
+    let accessToken;
+    if(this.loginInfo && this.loginInfo.id){
+        accessToken = this.loginInfo.id;
+        localStorage.setItem('access_token',accessToken)
+    }else{
+        accessToken = localStorage.getItem('access_token');
+    }
+    if(accessToken){
+      url += '?access_token='+accessToken;
+    }
+    // this.set('userLoggedIn',true);
+    // return;
+    this.makeAjaxCall(url,'get',null,null,null,null,(err,resp)=>{
+      if(err){
+        this.set('userLoggedIn',false);
+        return;
+      }
+      this.set('userLoggedIn',true);
+      this.dispatch(updateUserInfo(resp));
+    });
   }
 }
 

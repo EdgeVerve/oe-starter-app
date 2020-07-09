@@ -16,7 +16,7 @@ import {
 } from 'oe-mixins/oe-ajax-mixin.js';
 /** @polymerMixin */
 
-const F_Form = BaseClass => class extends OEFormMessagesMixin(OEModelHandler(OEFormValidationMixin(OEAjaxMixin(BaseClass)))) {
+const FTForm = BaseClass => class extends OEFormMessagesMixin(OEModelHandler(OEFormValidationMixin(OEAjaxMixin(BaseClass)))) {
   /**
    * @polymer
    * @mixinClass
@@ -164,4 +164,4 @@ const F_Form = BaseClass => class extends OEFormMessagesMixin(OEModelHandler(OEF
 
 };
 
-export const FormMixin = dedupingMixin(F_Form);
+export const FTFormMixin = dedupingMixin(FTForm);

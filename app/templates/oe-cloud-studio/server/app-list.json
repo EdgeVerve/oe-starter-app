@@ -4,6 +4,18 @@
     "enabled": true
   },
   {
+    "path": "oe-migration",
+    "enabled": true
+  },
+  {
+    "path": "oe-multi-tenancy",
+    "enabled": true
+  },
+  {
+    "path": "oe-metadata-ui",
+    "enabled": true
+  },
+  {
     "path": "./",
     "enabled": true
   }

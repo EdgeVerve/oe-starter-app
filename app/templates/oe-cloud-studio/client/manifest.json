@@ -1,7 +1,7 @@
 {
-  "name": "cassi bank",
-  "short_name": "cassi bank",
-  "description": "cassi bank client side implementation",
+  "name": "Oe Cloud",
+  "short_name": "Oe Cloud",
+  "description": "Oe Cloud client side implementation",
   "start_url": "/",
   "display": "standalone"
 }

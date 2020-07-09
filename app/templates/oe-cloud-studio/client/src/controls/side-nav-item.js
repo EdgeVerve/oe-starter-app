@@ -9,9 +9,9 @@ import "@polymer/paper-item/paper-item.js";
 import { OECommonMixin } from "oe-mixins/oe-common-mixin.js";
 import "@polymer/iron-icons/iron-icons.js";
  
-class FtSideNavItem extends OECommonMixin(PolymerElement) {
+class SideNavItem extends OECommonMixin(PolymerElement) {
   static get is() {
-    return 'ft-side-nav-item';
+    return 'side-nav-item';
   }
   static get template() {
     return html`
@@ -116,8 +116,8 @@ class FtSideNavItem extends OECommonMixin(PolymerElement) {
       <template is="dom-if" if=[[nested]]>
         <template is="dom-if" if="[[item.children.length]]">
           <paper-item class="submenu">
-            <ft-side-nav-item no-links=[[noLinks]] nested=[[nested]] id="child-nav-item" selected-route={{selectedRoute}} nav-items={{item.children}}
-              level=[[nextLevel]]></ft-side-nav-item>
+            <side-nav-item no-links=[[noLinks]] nested=[[nested]] id="child-nav-item" selected-route={{selectedRoute}} nav-items={{item.children}}
+              level=[[nextLevel]]></side-nav-item>
           </paper-item>
         </template>
       </template>
@@ -235,5 +235,5 @@ class FtSideNavItem extends OECommonMixin(PolymerElement) {
     this.addEventListener('change',this.nextLevelFun.bind(this));
   }
 }
-window.customElements.define(FtSideNavItem.is, FtSideNavItem);
+window.customElements.define(SideNavItem.is, SideNavItem);
 

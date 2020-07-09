@@ -37,10 +37,10 @@ var buildIncludeFilter = function (obj, level) {
   buildIncludeFilter(obj.scope.include, --level);
 };
 
-class FtSideNav extends OEAjaxMixin(OECommonMixin(PolymerElement)) {
+class SideNav extends OEAjaxMixin(OECommonMixin(PolymerElement)) {
 
   static get is() {
-    return 'ft-side-nav';
+    return 'side-nav';
   }
 
   static get template() {
@@ -313,4 +313,4 @@ class FtSideNav extends OEAjaxMixin(OECommonMixin(PolymerElement)) {
     this._getNavLinks(undefined);
   }
 }
-window.customElements.define(FtSideNav.is, FtSideNav);
+window.customElements.define(SideNav.is, SideNav);

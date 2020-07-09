@@ -122,7 +122,7 @@ class __ClassName__ extends PageView(FTFormMixin(PolymerElement)) {
       <template is="dom-if" if={{listMode}}>
          <paper-icon-button on-tap="_switchToNewMode" tabindex="-1" icon="add"></paper-icon-button>
       </template>
-  <page-header>
+  </page-header>
 
   <iron-pages class="flex subpages" selected="[[page]]" attr-for-selected="name">
     <div id="list" page={{page}} name="list" class="layout vertical">

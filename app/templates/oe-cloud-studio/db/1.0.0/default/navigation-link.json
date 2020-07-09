@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Home",
+    "url": "/",
+    "label": "Home page",
+    "icon": "home",
+    "group": "root",
+    "topLevel": true
+  }
+]

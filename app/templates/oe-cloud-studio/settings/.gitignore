@@ -1,0 +1,10 @@
+node_modules/
+bower_components/
+client/bower_components/
+client/node_modules/
+
+build/
+coverage/
+
+package-lock.json
+.DS_Store

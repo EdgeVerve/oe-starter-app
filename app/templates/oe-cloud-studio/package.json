@@ -1,5 +1,5 @@
 {
-  "name": "<%=appName%>",
+ "name": "<%=appName%>",
   "version": "<%=version%>",
   "description": "<%=description%>",
   "author":"<%=author%>",
@@ -18,11 +18,14 @@
   },
   "dependencies": {
     "async": "^2.5.0",
-    "lodash": "^4.17.15",
-    "loopback-component-explorer": "^6.5.0",
-    "oe-connector-mongodb": "^2.0.0",
-    "oe-cloud": "^2.0.0",
-    "oe-logger": "^2.0.0"
+    "loopback-component-explorer": "^6.4.0",
+    "oe-cloud": "git+http://evgit/oecloud.io/oe-cloud.git#master",
+    "oe-connector-mongodb": "git+http://evgit/oecloud.io/oe-connector-mongodb.git#master",
+    "oe-logger": "git+http://evgit/oecloud.io/oe-logger.git#master",
+    "oe-metadata-ui": "git+http://evgit/oecloud.io/oe-metadata-ui.git#master",
+    "oe-migration": "git+http://evgit/oecloud.io/oe-migration.git#master",
+    "oe-multi-tenancy": "git+http://evgit/oecloud.io/oe-multi-tenancy.git#master",
+    "strong-error-handler": "^3.5.0"
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",

@@ -1,0 +1,22 @@
+{
+    "contexts": {
+        "default": {
+            "id": 0,
+            "tenantId": "/default"
+        }
+    },
+    "files": [
+        {
+            "model": "NavigationLink",
+            "enabled": true,
+            "file": "./default/navigation-link.json",
+            "ctxId": "default"
+        },
+        {
+            "model": "UIRoute",
+            "enabled": true,
+            "file": "./default/ui-route.json",
+            "ctxId": "default"
+        }
+    ]
+}

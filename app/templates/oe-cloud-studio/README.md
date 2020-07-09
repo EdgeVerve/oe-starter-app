@@ -2,6 +2,13 @@
 
 A scaffold project of oe-cloud.
 
+## dependency
+* oe-cloud
+* oe-multi-tenancy
+* oe-logger
+
+## Installation, test cases and code coverage
+
 ### Pre-requisite
 
 - you should able to connecto to [evgit](http://evgit), [npmjs](https://registry.npmjs.org/) and [github](https://github.com) when you use npm on command line
