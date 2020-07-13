@@ -99,7 +99,7 @@ module.exports = class extends Generator {
         {
           type: 'checkbox',
           name: 'modules',
-          message: 'Up/Down to navigate and Space bar to select oe-cloud modules you want to use in your app.',
+          message: 'Up/Down to navigate and Space bar to select oe-cloud modules you want to use in your app. Hit enter to complete module selection.',
           choices: ['oe-multi-tenancy: Enables multi-tenancy',
             'oe-component-passport: Enables passport authentication for third party support, JWT, oAuth etc',
             'oe-common-mixins: Enables commonly used functionalities such as Version Mixin, Audit Field Mixin, Soft Delete Mixin, etc which can be attached to models',
