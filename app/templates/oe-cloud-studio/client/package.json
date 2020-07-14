@@ -1,5 +1,5 @@
 {
-  "name": "Oe Cloud UI",
+  "name": "oe-Cloud-UI",
   "description": "Oe Cloud web client side implementation",
   "scripts": {
     "eslint": "eslint .",
