@@ -20,6 +20,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
-    "webpack-virtual-modules": "^0.1.11"
+    "webpack-virtual-modules": "^0.1.11",
+    "http-server": "0.12.3"
   }
 }
