@@ -2,6 +2,12 @@
 
 A scaffold project of oe-cloud.
 
+### Migrate data
+
+```sh
+$ node server/migrate.js
+```
+
 
 ### Run as independent Server
 
