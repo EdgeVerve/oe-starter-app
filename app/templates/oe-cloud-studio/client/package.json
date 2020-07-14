@@ -1,6 +1,12 @@
 {
-  "name": "configdb-ui",
-  "description": "ConfigDB web client side implementation",
+  "name": "Oe Cloud UI",
+  "description": "Oe Cloud web client side implementation",
+  "scripts": {
+    "eslint": "eslint .",
+    "bundle": "webpack --env.NODE_ENV=production",
+    "postinstall": "npm run bundle",
+    "watch": "webpack --watch --debug "
+  },
   "dependencies": {
     "@polymer/app-layout": "^3.0.1",
     "@polymer/iron-icon": "^3.0.1",
@@ -57,10 +63,5 @@
     "oe-ajax": "git+http://evgit/oecloud.io/oe-ajax.git#master",
     "oe-utils": "git+http://evgit/oecloud.io/oe-utils.git#master",
     "oe-i18n-msg": "git+http://evgit/oecloud.io/oe-i18n-msg.git#master"
-  },
-  "scripts": {
-    "eslint": "eslint .",
-    "bundle": "webpack --env.NODE_ENV=production",
-    "watch": "webpack --watch --debug "
   }
 }

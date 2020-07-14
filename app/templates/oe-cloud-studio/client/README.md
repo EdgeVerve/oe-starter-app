@@ -1,33 +1,12 @@
-# \<cassi bank\>
+# \<Oe Cloud Client Side\>
 
-cassi bank client side implementation
-
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
-
-## Viewing Your Application
-
-```
-$ polymer serve
-```
+Oe Cloud client side implementation
 
 ## Building Your Application
 
 ```
-$ polymer build
+$ npm run bundle
 ```
 
-This will create builds of your application in the `build/` directory, optimized to be served in production. You can then serve the built versions by giving `polymer serve` a folder to serve from:
+This will create builds of your application in the `build/` directory, optimized to be served in production. 
 
-```
-$ polymer serve build/default
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
