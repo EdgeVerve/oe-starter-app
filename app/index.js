@@ -222,7 +222,7 @@ module.exports = class extends Generator {
 
       this.fs.copyTpl(
         this.templatePath(version + '/settings'),
-        this.destinationPath('./')
+        this.destinationPath('settings')
       );
     }
     if (this.options.oeCloud === 'oe-cloud-2.x-server-ui') {
