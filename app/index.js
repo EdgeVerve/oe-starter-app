@@ -199,7 +199,7 @@ module.exports = class extends Generator {
       );
 
       this.fs.copyTpl(
-        this.templatePath(version + 'oe-cloud-studio/client/package.json'),
+        this.templatePath(version + '/client/package.json'),
         this.destinationPath('client/package.json'), {
         appName: this.options.appName,
         description: this.options.description,
@@ -232,7 +232,7 @@ module.exports = class extends Generator {
       );
       
       this.fs.copyTpl(
-        this.templatePath(version + 'oe-cloud-2.x-server-ui/client/package.json'),
+        this.templatePath(version + '/client/package.json'),
         this.destinationPath('client/package.json'), {
         appName: this.options.appName,
         description: this.options.description,
