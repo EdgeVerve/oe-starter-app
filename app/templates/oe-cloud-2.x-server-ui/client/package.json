@@ -1,6 +1,8 @@
 {
-  "name": "oe-Cloud-UI",
-  "description": "oeCloud client side implementation",
+  "name": "<%=appName%>",
+  "version": "<%=version%>",
+  "description": "<%=description%>",
+  "author":"<%=author%>",
   "scripts": {
     "webpack": "webpack",
     "postinstall": "webpack"

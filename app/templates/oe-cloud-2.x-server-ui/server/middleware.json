@@ -20,9 +20,17 @@
     "routes:before": {},
     "routes:after": {},
     "files": {
-        "loopback#static": {
-            "params": "$!../client"
-        }
+        "serve-static": [
+            {
+              "params": "$!../build/webpack"
+            },
+            {
+              "params": "$!../build/default/client"
+            },
+            {
+              "params": "$!../client"
+            }
+          ]
     },
     "final": {},
     "final:after": {}

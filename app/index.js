@@ -65,13 +65,13 @@ module.exports = class extends Generator {
             name: 'oeCloud2x',
             message: 'Select which type of oe-cloud 2.x application you want to use?',
             default: 'oe-cloud-2.x-server',
-            choices: ['oe-cloud-2.x-server', 'oe-cloud-2.x-serverUI']
+            choices: ['oe-cloud-2.x-server', 'oe-cloud-2.x-server-ui']
           }
         ]).then((results) => {
           if (results.oeCloud2x === 'oe-cloud-2.x-server') {
             this.options.oeCloud = 'oe-cloud-2.x-server';
           }
-          if (results.oeCloud2x === 'oe-cloud-2.x-serverUI') {
+          if (results.oeCloud2x === 'oe-cloud-2.x-server-ui') {
             return inquirer.prompt([
               {
                 type: 'confirm',
@@ -84,7 +84,7 @@ module.exports = class extends Generator {
                 this.options.oeCloud = 'oe-cloud-studio';
               }
               else {
-                this.options.oeCloud = 'oe-cloud-2.x-serverUI';
+                this.options.oeCloud = 'oe-cloud-2.x-server-ui';
               }
             })
           }
@@ -94,7 +94,7 @@ module.exports = class extends Generator {
   }
 
   selectOeCloudModules() {
-    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       return inquirer.prompt([
         {
           type: 'checkbox',
@@ -140,7 +140,7 @@ module.exports = class extends Generator {
   }
 
   async updatePackageJson() {
-    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       console.log('\n Scaffolding of oe-cloud application in progress!! \n');
       var versionList = [];
       var res = {};
@@ -198,9 +198,18 @@ module.exports = class extends Generator {
         this.destinationPath('polymer.json')
       );
 
+      this.fs.copyTpl(
+        this.templatePath(version + 'oe-cloud-studio/client/package.json'),
+        this.destinationPath('client/package.json'), {
+        appName: this.options.appName,
+        description: this.options.description,
+        version: this.options.version,
+        author: this.options.author
+      }
+      );
 
     }
-    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-1.x') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-1.x') {
       this.fs.copyTpl(
         this.templatePath(version + '/common'),
         this.destinationPath('common')
@@ -216,10 +225,20 @@ module.exports = class extends Generator {
         this.destinationPath('./')
       );
     }
-    if (this.options.oeCloud === 'oe-cloud-2.x-serverUI') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server-ui') {
       this.fs.copy(
-        this.templatePath('oe-cloud-2.x-serverUI/client'),
+        this.templatePath('oe-cloud-2.x-server-ui/client'),
         this.destinationPath('client')
+      );
+      
+      this.fs.copyTpl(
+        this.templatePath(version + 'oe-cloud-2.x-server-ui/client/package.json'),
+        this.destinationPath('client/package.json'), {
+        appName: this.options.appName,
+        description: this.options.description,
+        version: this.options.version,
+        author: this.options.author
+      }
       );
     } else
       if (this.options.oeCloud === 'oe-cloud-1.x') {
@@ -229,14 +248,14 @@ module.exports = class extends Generator {
         );
       }
 
-    if ((this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') && isProvider) {
+    if ((this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') && isProvider) {
       this.fs.copy(
         this.templatePath(version + '/providers.json'),
         this.destinationPath('providers.json')
       );
     }
 
-    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       let existingappList = this.fs.readJSON(
         this.destinationPath('server/app-list.json')
       );
@@ -270,7 +289,7 @@ module.exports = class extends Generator {
       author: this.options.author
     }
     );
-    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-serverUI' || this.options.oeCloud === 'oe-cloud-studio') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       let existingPkg = this.fs.readJSON(
         this.destinationPath('package.json')
       );

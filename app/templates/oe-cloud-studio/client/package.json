@@ -1,6 +1,8 @@
 {
-  "name": "oe-Cloud-UI",
-  "description": "Oe Cloud web client side implementation",
+  "name": "<%=appName%>",
+  "version": "<%=version%>",
+  "description": "<%=description%>",
+  "author":"<%=author%>",
   "scripts": {
     "eslint": "eslint .",
     "bundle": "webpack --env.NODE_ENV=production",
