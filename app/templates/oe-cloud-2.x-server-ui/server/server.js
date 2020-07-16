@@ -23,8 +23,8 @@ var ensureLoggedIn = function ensureLoggedIn(req, res, next) {
     return;
   }
 };
-var clientPath = '../build/es5/client/';
-// Routes needed for login and logout and serving files
-oecloud.get(subPath + '/', ensureLoggedIn, function (req, res) {
+var clientPath = '../build/webpack';
+oecloud.get('/', function (req, res) {
   res.sendFile('index.html', { root: path.join(__dirname, clientPath) });
 });
+
