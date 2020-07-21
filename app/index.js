@@ -243,6 +243,10 @@ module.exports = class extends Generator {
     } else
       if (this.options.oeCloud === 'oe-cloud-1.x') {
         this.fs.copy(
+          this.templatePath(version + '/.bowerrc'),
+          this.destinationPath('.bowerrc')
+        );
+        this.fs.copy(
           this.templatePath('oe-cloud-1.x/client'),
           this.destinationPath('client')
         );
@@ -325,6 +329,13 @@ module.exports = class extends Generator {
       this.fs.copy(
         this.templatePath(version + '/webpack.config.js'),
         this.destinationPath('webpack.config.js')
+      );
+    }
+
+    if(this.options.oeCloud === 'oe-cloud-2.x-server'){
+      this.fs.copy(
+        this.templatePath('oe-cloud-2.x-server/client'),
+        this.destinationPath('client')
       );
     }
   }

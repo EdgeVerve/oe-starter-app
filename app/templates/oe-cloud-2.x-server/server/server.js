@@ -11,12 +11,6 @@ oecloud.boot(__dirname, function (err) {
   oecloud.emit('loaded');
 });
 
-var subPath = oecloud.get('subPath') || '';
-var ensureLoggedIn = function ensureLoggedIn(req, res, next) {
-  if (req.accessToken) {
-    next();
-  } else {
-    res.redirect(subPath + '/login');
-    return;
-  }
-};
+oecloud.get('/', function (req, res) {
+  res.sendFile('index.html', { root: path.join(__dirname, '../client/') });
+});

@@ -1,5 +1,5 @@
 {
-  "name": "App",
+  "name": "app-ui",
   "private": true,
   "dependencies": {
     "polymer": "^1.9.1",
