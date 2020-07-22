@@ -1,0 +1,21 @@
+{
+  "memdb": {
+    "name": "memdb",
+    "connector": "memory"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/commondb",
+    "database": "commondb",
+    "name": "db",
+    "connector": "oe-connector-mongodb",
+    "connectionTimeout": 500000,
+    "connectTimeoutMS": 500000,
+    "socketTimeoutMS": 500000
+  }
+}

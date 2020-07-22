@@ -1,0 +1,35 @@
+{
+ "name": "<%=appName%>",
+  "version": "<%=version%>",
+  "description": "<%=description%>",
+  "author":"<%=author%>",
+  "engines": {
+    "node": ">=6"
+  },
+  "main": "server/server.js",
+  "scripts": {
+    "lint": "eslint .",
+    "prestart": "cd client && npm run bundle",
+    "start": "node server/server",
+    "migrate": "node server/migrate.js",
+    "postinstall": "cd client && npm install --no-optional",
+    "bundle": "cd client && npm run bundle",
+    "watch": "cd client && npm run watch"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "loopback-component-explorer": "^6.4.0",
+    "oe-cloud": "git+http://evgit/oecloud.io/oe-cloud.git#master",
+    "oe-connector-mongodb": "git+http://evgit/oecloud.io/oe-connector-mongodb.git#master",
+    "oe-logger": "git+http://evgit/oecloud.io/oe-logger.git#master",
+    "oe-metadata-ui": "git+http://evgit/oecloud.io/oe-metadata-ui.git#master",
+    "oe-migration": "git+http://evgit/oecloud.io/oe-migration.git#master",
+    "oe-multi-tenancy": "git+http://evgit/oecloud.io/oe-multi-tenancy.git#master",
+    "strong-error-handler": "^3.5.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "7.2.3",
+    "eslint": "4.10.0"
+  },
+  "license": "MIT"
+}

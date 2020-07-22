@@ -1,0 +1,7 @@
+{
+  "name": "Oe Cloud",
+  "short_name": "Oe Cloud",
+  "description": "Oe Cloud client side implementation",
+  "start_url": "/",
+  "display": "standalone"
+}

@@ -1,0 +1,48 @@
+{
+  "root": "client",
+  "entrypoint": "index.html",
+  "shell": "app-shell.js",
+  "fragments": [],
+  "sources": [
+    "src/**",
+    "mixins/**",
+    "styles/**",
+    "images/**",
+    "scripts/**",
+    "templates/**",
+    "fonts/**",
+    "favicon.png",
+    "manifest.json",
+    "package.json"
+  ],
+  "extraDependencies": [
+    "node_modules/web-animations-js/**",
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "node_modules/lato-font/**"
+  ],
+  "moduleResolution": "node",
+  "npm": true,
+  "lint": {
+    "rules": [
+      "polymer-3"
+    ]
+  },
+  "builds": [
+    {
+      "name": "default",
+      "addServiceWorker": false,
+      "js": {
+        "minify": false,
+        "compile": false
+      },
+      "css": {
+        "minify": false
+      },
+      "html": {
+        "minify": false
+      },
+      "bundle": false,
+      "addPushManifest": false
+    }
+  ]
+}

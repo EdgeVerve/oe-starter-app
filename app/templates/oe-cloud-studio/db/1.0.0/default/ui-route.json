@@ -1,0 +1,9 @@
+[
+  {
+    "type": "elem",
+    "name": "landing-page",
+    "import": "/src/landing-page.js",
+    "path": "/",
+    "group": ""
+  }
+]

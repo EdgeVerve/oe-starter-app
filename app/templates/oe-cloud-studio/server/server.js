@@ -1,11 +1,8 @@
 /* eslint-disable no-console */
 var oecloud = require('oe-cloud');
 var path = require('path');
-// var resolve = require('resolve');
-
-// oecloud.addModuleMixinsToBaseEntity('oe-multi-tenancy');
-// oecloud.addSettingsToBaseEntity({autoscope:["tenantId"]});
 process.env.ENABLE_COOKIE = process.env.ENABLE_COOKIE || true;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 oecloud.boot(__dirname, function (err) {
   if (err) {
     console.error(err);
@@ -23,8 +20,7 @@ var ensureLoggedIn = function ensureLoggedIn(req, res, next) {
     return;
   }
 };
-var clientPath = '../build/es5/client/';
-// Routes needed for login and logout and serving files
-oecloud.get(subPath + '/', ensureLoggedIn, function (req, res) {
+var clientPath = '../build/webpack';
+oecloud.get('/', function (req, res) {
   res.sendFile('index.html', { root: path.join(__dirname, clientPath) });
 });

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Oe Cloud</title>
+    <meta name="description" content="client side implementation">
+    <script>
+      window.polymerSkipLoadingFontRoboto = true;
+      /**
+       * HACK: The Redux package assumes `process` exists - mock it here before
+       * the module is loaded.
+       */
+      window.process = {
+        env: {
+          NODE_ENV: 'production'
+        }
+      };
+    </script>
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="./node_modules/lato-font/css/lato-font.min.css">
+    <script src="./node_modules/web-animations-js/web-animations.min.js"></script>
+    <script src="./node_modules/web-animations-js/web-animations-next.min.js"></script>
+    <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="./app-shell.js"></script>
+    <style>
+        body {
+          font-family: 'Lato';
+          margin: 0px;
+          font-size: 16px;
+        }
+      </style>
+  </head>
+  <body style="margin: 0px">
+    <app-shell unresolved></app-shell>
+  </body>
+  <script>
+    var OEi18nMsg = window.OEi18nMsg || {};
+    var OEUtils = window.OEUtils || {};
+    OEi18nMsg.url = OEi18nMsg.url || (OEUtils && OEUtils.geturl)?OEUtils.geturl('/api/Literals/render'):'/api/Literals/render';
+    OEi18nMsg.lang = sessionStorage.lang || window.navigator.userLanguage || window.navigator.language;
+    sessionStorage.lang = OEi18nMsg.lang;
+    window.OEi18nMsg = OEi18nMsg;
+    window.OEUtils = OEUtils;
+    //Platform.performMicrotaskCheckpoint();
+  </script>
+</html>

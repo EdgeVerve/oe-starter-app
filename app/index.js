@@ -6,6 +6,7 @@ var stack = [];
 const util = require('util');
 const inquirer = require('inquirer');
 const exec = util.promisify(require('child_process').exec);
+var isProvider = false;
 
 
 // const { exec } = require('child_process');
@@ -45,7 +46,6 @@ module.exports = class extends Generator {
         message: 'Your application description?',
         default: 'A sample oecloud based application'
       }, {
-
         type: 'input',
         name: 'author',
         message: 'author',
@@ -58,16 +58,48 @@ module.exports = class extends Generator {
       this.options.description = answers.description;
       this.options.oeCloud = answers.oeCloud;
       this.options.bowerInstall = answers.oeCloud === 'oe-cloud-1.x' ? true : false;
+      if (answers.oeCloud === 'oe-cloud-2.x') {
+        return inquirer.prompt([
+          {
+            type: 'list',
+            name: 'oeCloud2x',
+            message: 'Select which type of oe-cloud 2.x application you want to use?',
+            default: 'oe-cloud-2.x-server',
+            choices: ['oe-cloud-2.x-server', 'oe-cloud-2.x-server-ui']
+          }
+        ]).then((results) => {
+          if (results.oeCloud2x === 'oe-cloud-2.x-server') {
+            this.options.oeCloud = 'oe-cloud-2.x-server';
+          }
+          if (results.oeCloud2x === 'oe-cloud-2.x-server-ui') {
+            return inquirer.prompt([
+              {
+                type: 'confirm',
+                name: 'electronApp',
+                message: 'Enable oe-studio?',
+                default: 'oe-cloud-2.x-server'
+              }
+            ]).then((res) => {
+              if (res.electronApp === true) {
+                this.options.oeCloud = 'oe-cloud-studio';
+              }
+              else {
+                this.options.oeCloud = 'oe-cloud-2.x-server-ui';
+              }
+            })
+          }
+        })
+      }
     });
   }
 
   selectOeCloudModules() {
-    if (this.options.oeCloud === 'oe-cloud-2.x') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       return inquirer.prompt([
         {
           type: 'checkbox',
           name: 'modules',
-          message: 'Up/Down to navigate and Space bar to select oe-cloud modules you want to use in your app.',
+          message: 'Up/Down to navigate and Space bar to select oe-cloud modules you want to use in your app. Hit enter to complete module selection.',
           choices: ['oe-multi-tenancy: Enables multi-tenancy',
             'oe-component-passport: Enables passport authentication for third party support, JWT, oAuth etc',
             'oe-common-mixins: Enables commonly used functionalities such as Version Mixin, Audit Field Mixin, Soft Delete Mixin, etc which can be attached to models',
@@ -91,6 +123,9 @@ module.exports = class extends Generator {
         var moduleListObject = {};
         for (var i = 0; i < list.length; i++) {
           var key = list[i].split(':')[0];
+          if (key === 'oe-component-passport') {
+            isProvider = true;
+          }
           stack.push(key);
           var appListObject = {};
           appListObject.path = key;
@@ -105,8 +140,8 @@ module.exports = class extends Generator {
   }
 
   async updatePackageJson() {
-    if (this.options.oeCloud === 'oe-cloud-2.x') {
-	  console.log('\n Scaffolding of oe-cloud 2.x application in progress!! \n');
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
+      console.log('\n Scaffolding of oe-cloud application in progress!! \n');
       var versionList = [];
       var res = {};
       for (var i = 0; i < stack.length; i++) {
@@ -122,7 +157,59 @@ module.exports = class extends Generator {
 
   writing() {
     var version = this.options.oeCloud;
-    if (this.options.oeCloud === 'oe-cloud-2.x' || this.options.oeCloud === 'oe-cloud-1.x') {
+    if (this.options.oeCloud === 'oe-cloud-studio') {
+      this.fs.copyTpl(
+        this.templatePath(version + '/common'),
+        this.destinationPath('common')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath(version + '/server'),
+        this.destinationPath('server')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath(version + '/settings'),
+        this.destinationPath('./')
+      );
+
+      this.fs.copy(
+        this.templatePath('oe-cloud-studio/client'),
+        this.destinationPath('client')
+      );
+
+      this.fs.copy(
+        this.templatePath('oe-cloud-studio/lib'),
+        this.destinationPath('lib')
+      );
+
+      this.fs.copy(
+        this.templatePath('oe-cloud-studio/db'),
+        this.destinationPath('db')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath(version + '/designer-config.js'),
+        this.destinationPath('designer-config.js')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath(version + '/polymer.json'),
+        this.destinationPath('polymer.json')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath(version + '/client/package.json'),
+        this.destinationPath('client/package.json'), {
+        appName: this.options.appName,
+        description: this.options.description,
+        version: this.options.version,
+        author: this.options.author
+      }
+      );
+
+    }
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-1.x') {
       this.fs.copyTpl(
         this.templatePath(version + '/common'),
         this.destinationPath('common')
@@ -138,25 +225,41 @@ module.exports = class extends Generator {
         this.destinationPath('./')
       );
     }
-    if (this.options.oeCloud === 'oe-cloud-2.x') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server-ui') {
       this.fs.copy(
-        this.templatePath('oe-cloud-2.x/client'),
+        this.templatePath('oe-cloud-2.x-server-ui/client'),
         this.destinationPath('client')
+      );
+      
+      this.fs.copyTpl(
+        this.templatePath(version + '/client/package.json'),
+        this.destinationPath('client/package.json'), {
+        appName: this.options.appName,
+        description: this.options.description,
+        version: this.options.version,
+        author: this.options.author
+      }
       );
     } else
-    if (this.options.oeCloud === 'oe-cloud-1.x') {
-      this.fs.copy(
-        this.templatePath('oe-cloud-1.x/client'),
-        this.destinationPath('client')
-      );
-    }
+      if (this.options.oeCloud === 'oe-cloud-1.x') {
+        this.fs.copy(
+          this.templatePath(version + '/.bowerrc'),
+          this.destinationPath('.bowerrc')
+        );
+        this.fs.copy(
+          this.templatePath('oe-cloud-1.x/client'),
+          this.destinationPath('client')
+        );
+      }
 
-    if (this.options.oeCloud === 'oe-cloud-2.x') {
+    if ((this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') && isProvider) {
       this.fs.copy(
         this.templatePath(version + '/providers.json'),
         this.destinationPath('providers.json')
       );
+    }
 
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       let existingappList = this.fs.readJSON(
         this.destinationPath('server/app-list.json')
       );
@@ -184,13 +287,13 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath(version + '/package.json'),
       this.destinationPath('package.json'), {
-        appName: this.options.appName,
-        description: this.options.description,
-        version: this.options.version,
-        author: this.options.author
-      }
+      appName: this.options.appName,
+      description: this.options.description,
+      version: this.options.version,
+      author: this.options.author
+    }
     );
-    if (this.options.oeCloud === 'oe-cloud-2.x') {
+    if (this.options.oeCloud === 'oe-cloud-2.x-server' || this.options.oeCloud === 'oe-cloud-2.x-server-ui' || this.options.oeCloud === 'oe-cloud-studio') {
       let existingPkg = this.fs.readJSON(
         this.destinationPath('package.json')
       );
@@ -226,6 +329,13 @@ module.exports = class extends Generator {
       this.fs.copy(
         this.templatePath(version + '/webpack.config.js'),
         this.destinationPath('webpack.config.js')
+      );
+    }
+
+    if(this.options.oeCloud === 'oe-cloud-2.x-server'){
+      this.fs.copy(
+        this.templatePath('oe-cloud-2.x-server/client'),
+        this.destinationPath('client')
       );
     }
   }
