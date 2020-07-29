@@ -28,3 +28,6 @@ oecloud.get('/', function (req, res) {
   res.sendFile('index.html', { root: path.join(__dirname, clientPath) });
 });
 
+oecloud.get('/login', function (req, res) {
+  res.sendFile('login.html', { root: path.join(__dirname, clientPath) });
+});

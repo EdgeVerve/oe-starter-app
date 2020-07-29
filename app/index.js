@@ -77,7 +77,7 @@ module.exports = class extends Generator {
                 type: 'confirm',
                 name: 'electronApp',
                 message: 'Enable oe-studio?',
-                default: 'oe-cloud-2.x-server'
+                default: false
               }
             ]).then((res) => {
               if (res.electronApp === true) {
@@ -264,7 +264,8 @@ module.exports = class extends Generator {
         this.destinationPath('server/app-list.json')
       );
       let list = existingappList.concat(appListArray);
-      let rootElementList = list.splice(1, 1);
+      let rootEleIndex = list.findIndex(ele => {if (ele.path === './') return ele;});
+      let rootElementList = list.splice(rootEleIndex, 1);
       let finalAppList = list.concat(rootElementList);
 
       this.fs.writeJSON(

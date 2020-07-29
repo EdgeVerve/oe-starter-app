@@ -2,7 +2,7 @@
   "name": "<%=appName%>-ui",
   "version": "<%=version%>",
   "description": "<%=description%>",
-  "author":"<%=author%>",
+  "author": "<%=author%>",
   "scripts": {
     "webpack": "webpack",
     "postinstall": "webpack"
@@ -13,9 +13,13 @@
     "@polymer/iron-image": "^3.0.1",
     "@polymer/iron-pages": "^3.0.1",
     "@polymer/paper-toolbar": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-input": "^3.0.1",
     "@polymer/polymer": "^3.1.0",
     "oe-ajax": "^2.0.0",
-    "oe-app-route": "^2.0.0"
+    "oe-app-route": "^2.0.0",
+    "oe-input": "^2.0.0",
+    "oe-mixins": "^2.0.0"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.7",
