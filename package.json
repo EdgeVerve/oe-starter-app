@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "oe-generator": "git+http://evgit/oecloud.io/oe-generator.git#1.2.3",
-    "fullname": "^4.0.1"
+    "fullname": "4.0.1"
   },
   "files": [
     "app"

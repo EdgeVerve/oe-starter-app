@@ -135,11 +135,11 @@ class HomePage extends PolymerElement {
                     <p class="feature-content">oeCloud.io is model driven framework.Model represents Business Entity. This also makes application micro
                         service enabled.Follow below links to understand some of these features : </p>
 
-                    <div class="link"> <a target="_blank" href="https://www.oecloud.io/guide/baseentity">What is a model</a></div>
-                    <div class="link"> <a target="_blank" href="https://www.oecloud.io/guide/userlogin">Authorization</a></div>
-                    <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/createmodel">Creating a Model</a></div>
-                    <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/manageamodel">Manage a model</a></div>
-                    <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/modelrelations">Create Relations among models</a></div>
+                    <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/baseentity">What is a model</a></div>
+                    <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/userlogin">Authorization</a></div>
+                    <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/createmodel">Creating a Model</a></div>
+                    <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/manageamodel">Manage a model</a></div>
+                    <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/modelrelations">Create Relations among models</a></div>
 
                 </div>
                 <div class="feature">
@@ -150,11 +150,11 @@ class HomePage extends PolymerElement {
                         inbuilt validation support, you can create business rules and you can create workflow around model
                         - all this at runtime</p>
                     <div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/validations">Validations</a></div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/relationalvalidation">Relational Validations</a></div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/conditionalvalidation">Conditional Validations</a></div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/customvalidation">Custom Validations</a></div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/businessruleengine">Business Rule Engine</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/validations">Validations</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/relationalvalidation">Relational Validations</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/conditionalvalidation">Conditional Validations</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/customvalidation">Custom Validations</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/businessruleengine">Business Rule Engine</a></div>
                     </div>
                 </div>
                 <div class="feature">
@@ -164,7 +164,7 @@ class HomePage extends PolymerElement {
                     <p class="feature-content">oeCloud.io employs various Enterprise Application patterns to guarantee performance and data integrity
                         in scalable clustered environment</p>
                     <div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/modelhistory">Model History Functionality</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/modelhistory">Model History Functionality</a></div>
                     </div>
                 </div>
                 <div class="feature">
@@ -195,9 +195,9 @@ class HomePage extends PolymerElement {
                     <p class="feature-content">oeCloud.io framework based application can be configured to behave differently based on context. Context
                         can be tenant, user, region, device and so on.. </p>
                     <div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/datapersonalization">Data Personalisation</a></div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/servicePersonalization">Service Personalisation</a></div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/modelpersonalization">Model Personalisation</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/datapersonalization">Data Personalisation</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/servicePersonalization">Service Personalisation</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/modelpersonalization">Model Personalisation</a></div>
 
                     </div>
                 </div>
@@ -207,7 +207,7 @@ class HomePage extends PolymerElement {
                     </div>
                     <p class="feature-content">oeCloud.io offers various supporting features like logging, auditing out of box</p>
                     <div>
-                        <div class="link"><a target="_blank" href="https://www.oecloud.io/guide/auditcontrol">Model Auditing Functionality</a></div>
+                        <div class="link"><a target="_blank" rel="noopener noreferrer" href="https://www.oecloud.io/guide/auditcontrol">Model Auditing Functionality</a></div>
                     </div>
                 </div>
 
