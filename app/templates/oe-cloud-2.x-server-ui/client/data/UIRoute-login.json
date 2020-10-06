@@ -1,0 +1,7 @@
+[{
+    "type": "elem",
+    "path": "/login",
+    "name": "login-page",
+    "import": "/src/login-page.js"
+    }
+  ]

@@ -1,14 +1,11 @@
 {
-  "name": "<%=appName%>",
+  "name": "<%=appName%>-ui",
   "version": "<%=version%>",
   "description": "<%=description%>",
-  "author":"<%=author%>",
+  "author": "<%=author%>",
   "scripts": {
-    "test": "polymer test --module-resolution node --skip-selenium-install",
-    "doc": "polymer analyze *.js > analysis.json",
     "webpack": "webpack",
-    "postinstall": "webpack",
-    "start": "http-server ./build/webpack/"
+    "postinstall": "webpack"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",
@@ -16,17 +13,19 @@
     "@polymer/iron-image": "^3.0.1",
     "@polymer/iron-pages": "^3.0.1",
     "@polymer/paper-toolbar": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-input": "^3.0.1",
     "@polymer/polymer": "^3.1.0",
     "oe-ajax": "^2.0.0",
-    "oe-app-route": "^2.0.0"
+    "oe-app-route": "^2.0.0",
+    "oe-input": "^2.0.0",
+    "oe-mixins": "^2.0.0"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.7",
     "copy-webpack-plugin": "^5.0.4",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
-    "webpack-virtual-modules": "^0.1.11",
-    "http-server": "0.12.3"
-  },
-  "license": "MIT"
+    "webpack-virtual-modules": "^0.1.11"
+  }
 }

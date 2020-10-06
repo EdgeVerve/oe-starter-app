@@ -1,0 +1,92 @@
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+@font-face {
+    font-family: 'SansPro-Regular';
+    src: url('../fonts/SourceSansPro-Regular.ttf');
+}
+@font-face {
+    font-family: 'SansPro-Bold';
+    src: url('../fonts/SourceSansPro-Bold.ttf');
+}
+@font-face {
+    font-family: 'SansPro-Semibold';
+    src: url('../fonts/SourceSansPro-Semibold.ttf');
+}
+@font-face {
+    font-family: 'SansPro-Italic';
+    src: url('../fonts/SourceSansPro-Italic.ttf');
+}
+@font-face {
+    font-family: 'SansPro-Light';
+    src: url('../fonts/SourceSansPro-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Rubik-Regular';
+    src: url('../fonts/Rubik-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Rubik-Medium';
+    src: url('../fonts/Rubik-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Rubik-Light';
+    src: url('../fonts/Rubik-Light.ttf');
+}
+
+body {
+    background: #fff;
+    font-family: 'SansPro-Regular';
+    color: #000;
+    line-height: 24px;
+    font-size: 16px;
+    margin: 0px;
+}
+
+
+p{
+    line-height: 24px;
+    font-weight: 400;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.pull-right{
+    float: right;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+span + iron-icon{
+    margin-left: 8px;
+}
+iron-icon + span{
+    margin-left: 8px;
+}
+.full-width {
+    width: 100%;
+    display: inline-block;
+}
+
+.align-right {
+    float: right;
+}

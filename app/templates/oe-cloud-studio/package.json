@@ -1,0 +1,35 @@
+{
+ "name": "<%=appName%>",
+  "version": "<%=version%>",
+  "description": "<%=description%>",
+  "author":"<%=author%>",
+  "engines": {
+    "node": ">=6"
+  },
+  "main": "server/server.js",
+  "scripts": {
+    "lint": "eslint .",
+    "prestart": "cd client && npm run bundle",
+    "start": "node server/server",
+    "migrate": "node server/migrate.js",
+    "postinstall": "cd client && npm install --no-optional",
+    "bundle": "cd client && npm run bundle",
+    "watch": "cd client && npm run watch"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "loopback-component-explorer": "^6.4.0",
+    "oe-cloud": "^2.0.0",
+    "oe-connector-mongodb": "^2.0.0",
+    "oe-logger": "^2.0.0",
+    "oe-metadata-ui": "^2.0.0",
+    "oe-migration": "^2.0.0",
+    "oe-multi-tenancy": "^2.0.0",
+    "strong-error-handler": "^3.5.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "7.2.3",
+    "eslint": "4.10.0"
+  },
+  "license": "MIT"
+}

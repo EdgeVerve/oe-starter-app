@@ -1,6 +1,6 @@
 {
   "name": "oe-starter-app",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Starter app generator to scaffold an oec-next based application with CI/CD",
   "repository": {
     "type": "git",

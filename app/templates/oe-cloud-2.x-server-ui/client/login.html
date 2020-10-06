@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Login</title>
+  <meta name="description" content="oeCloud client side implementation">
+  <style>
+      body{
+          margin : 0px;
+      }
+  </style>
+  <script>
+    window.OEUtils = window.OEUtils || {};
+    window.OEUtils.restApiRoot = '/api';
+    window.OEUtils.uibaseroute = window.location.origin;
+  </script>
+  <!-- See https://goo.gl/OOhYW5 -->
+  <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module" src="/src/login-shell.js"></script>
+</head>
+
+<body>
+  <login-shell unresolved=""></login-shell>
+</body>
+
+</html>

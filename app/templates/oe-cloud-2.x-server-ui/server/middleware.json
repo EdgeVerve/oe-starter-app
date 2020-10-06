@@ -1,0 +1,29 @@
+{
+  "initial:before": {
+    "loopback#favicon": {
+      "params": "./build/webpack/favicon.ico"
+    }
+  },
+  "initial": {
+    "compression": {},
+    "cors": {
+      "params": {
+        "origin": true,
+        "credentials": true,
+        "maxAge": 86400
+      }
+    }
+  },
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes:before": {},
+  "routes:after": {},
+  "files": {
+    "serve-static": {
+      "params": "$!../build/webpack"
+    }
+  },
+  "final": {},
+  "final:after": {}
+}
